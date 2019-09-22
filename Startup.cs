@@ -29,7 +29,10 @@ namespace SZT
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+
             });
+
+
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -58,6 +61,12 @@ namespace SZT
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            
+                routes.MapAreaRoute(
+                  name: "Admin_default",
+                  areaName: "Admin",
+                  template: "Admin/{controller=Home}/{action=Index}/{id?}"
+                );
             });
         }
     }
